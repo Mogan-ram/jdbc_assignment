@@ -73,7 +73,7 @@ public class EmployeeDao {
         }
     }
 
-    public void updateDesignation(int empId, String newDesignation){
+    public boolean updateDesignation(int empId, String newDesignation){
         String sql = "update employee SET design = ? where emp_id = ?";
 
         try(Connection conn = DBconnection.getConnection();
@@ -91,9 +91,10 @@ public class EmployeeDao {
         catch (SQLException e){
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void deleteEmployee(int empId){
+    public boolean deleteEmployee(int empId){
         String sql = "delete from employee where emp_id = ?";
 
         try(Connection conn = DBconnection.getConnection();
@@ -109,6 +110,7 @@ public class EmployeeDao {
         catch (SQLException e){
             e.printStackTrace();
         }
+        return false;
     }
 
     public int getTotatlEmployees(){
